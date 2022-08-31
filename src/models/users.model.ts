@@ -33,7 +33,7 @@ export class User extends Model<User, UserCreationAttrs> {
   })
   email: string;
 
-  @ApiProperty({ example: 'Test1231', description: 'Password' })
+  @ApiProperty({ example: 'Test1231', description: 'Hashed password' })
   @Column({
     type: DataType.STRING,
     allowNull: false,
