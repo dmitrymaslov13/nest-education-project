@@ -40,6 +40,6 @@ export class Role extends Model<Role, RolesCreationAttrs> {
   })
   description: string;
 
-  // @BelongsToMany(() => User, () => UserRoles)
-  // user: User[];
+  @BelongsToMany(() => User, () => UserRoles)
+  user: User[];
 }
