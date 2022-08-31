@@ -1,10 +1,8 @@
-import { CreateUserDto } from '@app/dtos';
-import { User } from '@app/models';
+import { BanUserDto, CreateUserDto, AddRoleToUserDto } from '@app/dtos';
+import { User } from '@app/entities';
 import { RolesService } from '@app/features/roles/roles.service';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { AddRoleToUserDto } from '@app/dtos/user/add-role.dto';
-import { BanUserDto } from '@app/dtos/user/add-ban.dto';
 
 const USER_NOT_FOUNDED_ERROR = new HttpException('User not founded', HttpStatus.NOT_FOUND)
 

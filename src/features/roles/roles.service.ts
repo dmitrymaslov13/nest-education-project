@@ -1,5 +1,5 @@
-import { CreateRoleDto } from '@app/dtos/role/create-role.dto';
-import { Role } from '@app/models';
+import { CreateRoleDto } from '@app/dtos/';
+import { Role } from '@app/entities';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 

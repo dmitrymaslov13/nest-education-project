@@ -1,5 +1,5 @@
 import { ROLES_KEY } from "@app/decorators/roles-auth.decorator";
-import { Role, User } from "@app/models";
+import { Role, User } from "@app/entities";
 import { CanActivate, ExecutionContext, HttpException, HttpStatus, Injectable, UnauthorizedException } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
 import { JwtService } from '@nestjs/jwt'

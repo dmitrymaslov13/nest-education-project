@@ -1,5 +1,5 @@
 import { CreateUserDto } from '@app/dtos';
-import { User } from '@app/models';
+import { User } from '@app/entities';
 import { HttpException, HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';

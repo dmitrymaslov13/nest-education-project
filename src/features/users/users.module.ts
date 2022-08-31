@@ -1,5 +1,5 @@
 
-import { Role, User, UserRoles } from '@app/models';
+import { Role, User, UserRoles } from '@app/entities';
 import { RolesModule } from '@app/features/roles/roles.module';
 import { forwardRef, Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
