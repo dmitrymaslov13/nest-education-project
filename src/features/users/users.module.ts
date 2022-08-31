@@ -1,6 +1,6 @@
 
 import { Role, User, UserRoles } from '@app/models';
-import { RolesModule } from '@app/roles/roles.module';
+import { RolesModule } from '@app/features/roles/roles.module';
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { UsersController } from './users.controller';
@@ -15,5 +15,6 @@ import { UsersService } from './users.service';
     UserRoles,
   ]), 
   RolesModule],
+  exports: [UsersService]
 })
 export class UsersModule {}
