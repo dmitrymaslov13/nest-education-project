@@ -1,8 +1,12 @@
 import { CreateUserDto } from '@app/dtos';
 import { User } from '@app/models';
 import { RolesService } from '@app/features/roles/roles.service';
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { AddRoleToUserDto } from '@app/dtos/user/add-role.dto';
+import { BanUserDto } from '@app/dtos/user/add-ban.dto';
+
+const USER_NOT_FOUNDED_ERROR = new HttpException('User not founded', HttpStatus.NOT_FOUND)
 
 @Injectable()
 export class UsersService {
@@ -31,6 +35,42 @@ export class UsersService {
       where: { email },
       include: { all: true }
     })
+    return user
+  }
+
+  public async getUserById(id: number): Promise<User> {
+    const user = await this.userRepository.findByPk(id)    
+    return user
+  }
+
+  public async addRoleToUser(dto: AddRoleToUserDto) {
+    const user = await this.getUserById(dto.userId)
+    const role = await this.roleService.getRoleByValue(dto.value)
+
+
+    if (user == null) {
+      throw USER_NOT_FOUNDED_ERROR
+    }
+
+    if (role == null) {
+      throw new HttpException('Role not founded', HttpStatus.NOT_FOUND)
+    }
+
+    await user.$add('roles', role.id)
+    return dto
+  }
+
+  public async banUser(dto: BanUserDto) {
+    const user = await this.getUserById(dto.userId)
+
+    if (user == null) {
+      throw USER_NOT_FOUNDED_ERROR
+    }
+
+    user.banned = true
+    user.banReason = dto.banReason
+
+    await user.save()
     return user
   }
 }
