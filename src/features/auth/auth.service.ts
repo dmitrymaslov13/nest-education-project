@@ -22,8 +22,6 @@ export class AuthService {
       registrationDto.email,
     );
     
-    console.log(candidate)
-
     if (candidate != null) {
       throw new HttpException(
         'User with this email address already exists',
