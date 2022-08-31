@@ -1,6 +1,6 @@
 import { CreateUserDto } from '@app/dtos';
 import { User } from '@app/models';
-import { RolesService } from '@app/roles/roles.service';
+import { RolesService } from '@app/features/roles/roles.service';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 
